@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import {Helmet} from 'react-helmet'
 import './App.css';
+import { Card } from './components/Card';
+import {Header} from './components/Header'
+import travelData from './data/travelData';
 
 function App() {
+
+  const data = travelData.map((item)=>{
+      return <Card key={item.id} items={item}/>
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App  flex justify-center">
+      <Helmet>
+        <title>Travel Journal</title>
+        <meta name="description" content="Travel Journal Application" />
+      </Helmet>
+
+      <div className='w-[550px] h-[704px]'>
+      <Header/>
+      
+
+      <div className='flex flex-col'>
+          {data}
+      </div>
+
+      </div>
+      
     </div>
   );
 }
